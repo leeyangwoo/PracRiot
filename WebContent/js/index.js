@@ -1,16 +1,4 @@
-<html>
-<head>
-<title>
-ddd
-</title>
-<meta http-equiv="content-type" content="text/html" charset="utf-8" />
-<style>
-.s{
-  background-color: red;
-}
-</style>
-<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
-<script>
+
 $(document).ready(function(){
 
   $('#temp').addClass("s");
@@ -38,17 +26,3 @@ $(document).ready(function(){
 
 
 }); //jQuery
-
-</script>
-</head>
-<body>
-  <div id="temp">
-    <h1>Riot api</h1>
-    'https://na.api.pvp.net/api/lol/kr/v1.2/champion/RiotSchmick?api_key=d24228a4-c215-49ff-89a1-a5e31d5059be'
-
-  </div>
-  <div id="result">
-    def
-  </div>
-</body>
-</html>
