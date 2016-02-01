@@ -8,20 +8,45 @@ ddd
   background-color: red;
 }
 </style>
-<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
 <script>
 $(document).ready(function(){
+
   $('#temp').addClass("s");
-});
+  var summonerName = "RiotSchmick";
+  var api_key = "d24228a4-c215-49ff-89a1-a5e31d5059be";
+  $('#result').html("df");
+
+  $.ajax({
+    url:
+    //'https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/'+summonerName+'?api_key='+api_key,
+    'https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/RiotSchmick?api_key=d24228a4-c215-49ff-89a1-a5e31d5059be',
+    type: 'GET',
+    dataType:'json',
+    data:{
+
+    },
+    success:function(json){
+      document.getElementById("result").innerHTML = json["riotschmick"].name + json["riotschmick"].summonerLevel;
+    },
+    error:function(XMLHttpRequest, textStatus, errorThrown){
+      alert("error");
+    }
+  }); //ajax
+
+
+}); //jQuery
 
 </script>
 </head>
 <body>
   <div id="temp">
-    dfef practice
-    'https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/RiotSchmick?api_key=<key>'
-    d24228a4-c215-49ff-89a1-a5e31d5059be
-    dedwdwdwdfijeifjdkfj
+    <h1>Riot api</h1>
+    'https://na.api.pvp.net/api/lol/kr/v1.2/champion/RiotSchmick?api_key=d24228a4-c215-49ff-89a1-a5e31d5059be'
+
+  </div>
+  <div id="result">
+    def
   </div>
 </body>
 </html>
