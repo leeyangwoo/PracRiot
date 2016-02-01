@@ -1,2 +1,3 @@
-# PracRiot
-RiotAPI
+# Practice Riot Games API
+
+parsing Data
