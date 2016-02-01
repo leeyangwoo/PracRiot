@@ -17,8 +17,16 @@
       <h1>Riot api</h1>
       <mark>소환사 이름을 검색해보세요</mark>
     </div>
+    <div>
+      <form role="form">
+        <div class="form-group col-xs-2">
+          <label for="sumName">소환사 이름:</label>
+          <input type="text" class="form-control" id="sumName" placeholder="소환사명">
+        </div>
+      </form>
+    </div>
     <div id="result">
-      def
+
     </div>
   </div>
 </body>
