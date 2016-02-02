@@ -1,33 +1,41 @@
 
 $(document).ready(function(){
 
-  $('#temp').addClass("s");
-  var summonerName = "sktt1faker";
-  //var summonerName = "abc";
   var api_key = "d24228a4-c215-49ff-89a1-a5e31d5059be";
-  $('#result').html("df");
 
-  $.ajax({
-    url:
-    //'https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/'+summonerName+'?api_key='+api_key,
-    'https://kr.api.pvp.net/api/lol/kr/v1.4/summoner/by-name/'+summonerName+'?api_key='+api_key,
-    type: 'GET',
-    dataType:'json',
-    data:{
+  $('#btnSearch').click(function(){
+    var summonerName = $('#sumName').val();
+    alert(summonerName);
+    if (summonerName !== ""){
+      $.ajax({
+        url:
+        'https://kr.api.pvp.net/api/lol/kr/v1.4/summoner/by-name/'+summonerName+'?api_key='+api_key,
+        type: 'GET',
+        dataType:'json',
+        data:{
 
-    },
-    success:function(json){
-      document.getElementById("result").innerHTML = json[summonerName].name + json[summonerName].summonerLevel;
-    },
-    error:function(XMLHttpRequest, textStatus, errorThrown){
-      alert("error");
+        },
+        success:function(json){
+          var sumName_trim = summonerName.replace(" ","");
+          sumName_trim = sumName_trim.toLowerCase().trim();
+
+          var summonerLevel = json[sumName_trim].summonerLevel;
+          var summonerID = json[sumName_trim].name;
+
+          $('#resultId').html(summonerID);
+          $('#resultLevel').html(summonerLevel);
+        },
+        error:function(XMLHttpRequest, textStatus, errorThrown){
+          alert("error");
+        }
+      });
     }
-  }); //ajax
+  });
 
 
 }); //jQuery
 
-/*
+/*                       JS Fiddle - trim
 var sumName = "";
 
 function summonerLookUp() {
@@ -69,4 +77,30 @@ function summonerLookUp() {
 function Name() {
     alert(sumName);
 }
+*/
+
+
+/*                        Faker
+
+  var summonerName = "sktt1faker";
+  //var summonerName = "abc";
+
+  $('#result').html("df");
+
+  $.ajax({
+    url:
+    //'https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/'+summonerName+'?api_key='+api_key,
+    'https://kr.api.pvp.net/api/lol/kr/v1.4/summoner/by-name/'+summonerName+'?api_key='+api_key,
+    type: 'GET',
+    dataType:'json',
+    data:{
+
+    },
+    success:function(json){
+      document.getElementById("resultId").innerHTML = json[summonerName].name + json[summonerName].summonerLevel;
+    },
+    error:function(XMLHttpRequest, textStatus, errorThrown){
+      alert("error");
+    }
+  }); //ajax
 */

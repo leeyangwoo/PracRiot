@@ -26,8 +26,11 @@
         <button type="button" class="btn btn-success" id="btnSearch">검색</button>
       </form>
     </div>
-    <div class="row" id="result">
-
+    <div class="row" id="resultId">
+        id
+    </div>
+    <div class="row" id="resultLevel">
+        lv
     </div>
   </div>
 </body>
