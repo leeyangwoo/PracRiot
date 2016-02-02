@@ -3,26 +3,29 @@ $(document).ready(function(){
 
   var api_key = "d24228a4-c215-49ff-89a1-a5e31d5059be";
 
+
   $('#btnSearch').click(function(){
-    var summonerName = $('#sumName').val();
-    if (summonerName !== ""){
+    var summonerNameI = $('#sumName').val();
+    if (summonerNameI !== ""){
       $.ajax({
         url:
-        'https://kr.api.pvp.net/api/lol/kr/v1.4/summoner/by-name/'+summonerName+'?api_key='+api_key,
+        'https://kr.api.pvp.net/api/lol/kr/v1.4/summoner/by-name/'+summonerNameI+'?api_key='+api_key,
         type: 'GET',
         dataType:'json',
         data:{
 
         },
         success:function(json){
-          var sumName_trim = summonerName.replace(/ /gi,"");
+          var sumName_trim = summonerNameI.replace(/ /gi,"");
           sumName_trim = sumName_trim.toLowerCase().trim();
 
           var summonerLevel = json[sumName_trim].summonerLevel;
-          var summonerID = json[sumName_trim].name;
-          
-          $('#resultId').html(summonerID);
+          var summonerName = json[sumName_trim].name;
+          var summonerId = json[sumName_trim].id;
+
+          $('#resultName').html(summonerName);
           $('#resultLevel').html(summonerLevel);
+          $('#resultId').html(summonerId);
         },
         error:function(XMLHttpRequest, textStatus, errorThrown){
           alert("error");
@@ -30,6 +33,38 @@ $(document).ready(function(){
       });
     }
   });
+
+  $('#sumName').keyup(function(e){
+    if(e.keyCode == 13){
+      var summonerNameI = $('#sumName').val();
+      if (summonerNameI !== ""){
+        $.ajax({
+          url:
+          'https://kr.api.pvp.net/api/lol/kr/v1.4/summoner/by-name/'+summonerNameI+'?api_key='+api_key,
+          type: 'GET',
+          dataType:'json',
+          data:{
+
+          },
+          success:function(json){
+            var sumName_trim = summonerNameI.replace(/ /gi,"");
+            sumName_trim = sumName_trim.toLowerCase().trim();
+
+            var summonerLevel = json[sumName_trim].summonerLevel;
+            var summonerName = json[sumName_trim].name;
+            var summonerId = json[sumName_trim].id;
+
+            $('#resultName').html(summonerName);
+            $('#resultLevel').html(summonerLevel);
+            $('#resultId').html(summonerId);
+          },
+          error:function(XMLHttpRequest, textStatus, errorThrown){
+            alert("error");
+          }
+        });
+      }
+    }
+  })
 
 
 }); //jQuery

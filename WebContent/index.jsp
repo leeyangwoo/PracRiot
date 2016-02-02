@@ -17,21 +17,25 @@
       <h1>Riot api</h1>
       <mark>소환사 이름을 검색해보세요</mark>
     </div>
-    <div class="row">
-      <form role="form">
+    <div class="row" id="inputDiv">
+    <!--  <form role="form"> -->
         <div class="form-group col-xs-2">
           <label for="sumName">소환사 이름:</label>
-          <input type="text" class="form-control" id="sumName" placeholder="소환사명">
+          <input type="text" class="form-control" id="sumName" name="name" placeholder="소환사명">
         </div>
         <button type="button" class="btn btn-success" id="btnSearch">검색</button>
-      </form>
+    <!--  </form> -->
     </div>
-    <div class="row" id="resultId">
-        id
+    <div class="row" id="resultName">
+        name
     </div>
     <div class="row" id="resultLevel">
         lv
     </div>
+    <div class="row" id="resultId">
+        id
+    </div>
+
   </div>
 </body>
 </html>
