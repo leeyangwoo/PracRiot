@@ -5,7 +5,6 @@ $(document).ready(function(){
 
   $('#btnSearch').click(function(){
     var summonerName = $('#sumName').val();
-    alert(summonerName);
     if (summonerName !== ""){
       $.ajax({
         url:
@@ -16,12 +15,12 @@ $(document).ready(function(){
 
         },
         success:function(json){
-          var sumName_trim = summonerName.replace(" ","");
+          var sumName_trim = summonerName.replace(/ /gi,"");
           sumName_trim = sumName_trim.toLowerCase().trim();
 
           var summonerLevel = json[sumName_trim].summonerLevel;
           var summonerID = json[sumName_trim].name;
-
+          
           $('#resultId').html(summonerID);
           $('#resultLevel').html(summonerLevel);
         },
