@@ -1,12 +1,25 @@
 
-#result{
-  background-color: red;
-}
+
 #btnSearch{
   margin-top: 25px;
 }
 
 #inputDiv{
   margin:auto;
-  width:120%;
+  margin-top: 50px;
+  width:100%;
+}
+#result{
+
+  margin-top: 30px;
+}
+#bg{
+  position:fixed;
+  top:0;
+  left:0;
+
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -9999;
+  opacity: 0.8;
 }

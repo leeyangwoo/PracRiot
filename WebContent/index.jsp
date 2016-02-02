@@ -12,12 +12,13 @@
 <script src="js/script.js" type='text/javascript'></script>
 </head>
 <body>
+  <img src="images/no4.jpg" id="bg" alt="">
   <div class="container">
     <div id="temp" class="jumbotron">
       <h1>Riot api</h1>
       <mark>소환사 이름을 검색해보세요</mark>
     </div>
-    <div class="row" id="inputDiv">
+    <div class="well" id="inputDiv">
     <!--  <form role="form"> -->
         <div class="form-group col-xs-2">
           <label for="sumName">소환사 이름:</label>
@@ -26,18 +27,15 @@
         <button type="button" class="btn btn-success" id="btnSearch">검색</button>
     <!--  </form> -->
     </div>
-    <div class="row" id="resultName">
-        name
+    <div class="panel panel-info" id="result">
+        <div class="panel-heading" id="resultName">name</div>
+        <div class="panel-body">
+          <span id="resultLevel"></span><br>
+          <span id="resultId"></span><br>
+          <span id="resultTier"></span><br>
+        </div>
     </div>
-    <div class="row" id="resultLevel">
-        lv
-    </div>
-    <div class="row" id="resultId">
-        id
-    </div>
-    <div class="row" id="resultTier">
 
-    </div>
 
   </div>
 </body>
