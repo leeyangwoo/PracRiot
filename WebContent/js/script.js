@@ -4,7 +4,7 @@ $(document).ready(function(){
   var api_key = "d24228a4-c215-49ff-89a1-a5e31d5059be";
 
 
-  $('#btnSearch').click(function(){
+  $('#btnSearch').click(function(){             //Button Click
     var summonerNameI = $('#sumName').val();
     if (summonerNameI !== ""){
       $.ajax({
@@ -26,6 +26,7 @@ $(document).ready(function(){
           $('#resultName').html(summonerName);
           $('#resultLevel').html(summonerLevel);
           $('#resultId').html(summonerId);
+          callTier(summonerId);
         },
         error:function(XMLHttpRequest, textStatus, errorThrown){
           alert("error");
@@ -34,7 +35,7 @@ $(document).ready(function(){
     }
   });
 
-  $('#sumName').keyup(function(e){
+  $('#sumName').keyup(function(e){                       //Enter key
     if(e.keyCode == 13){
       var summonerNameI = $('#sumName').val();
       if (summonerNameI !== ""){
@@ -57,6 +58,7 @@ $(document).ready(function(){
             $('#resultName').html(summonerName);
             $('#resultLevel').html(summonerLevel);
             $('#resultId').html(summonerId);
+            callTier(summonerId);
           },
           error:function(XMLHttpRequest, textStatus, errorThrown){
             alert("error");
@@ -64,12 +66,39 @@ $(document).ready(function(){
         });
       }
     }
-  })
+  });
 
 
 }); //jQuery
 
-/*                       JS Fiddle - trim
+function callTier(id){
+  var api_key = "d24228a4-c215-49ff-89a1-a5e31d5059be";
+  $.ajax({
+    url:
+    'https://kr.api.pvp.net/api/lol/kr/v2.5/league/by-summoner/'+id+'/entry?api_key='+api_key,
+    type: 'GET',
+    dataType: 'json',
+    data:{
+
+    },
+    success:function(json){
+      var summonerTier = json[id][0].tier;
+      var summonerDiv = json[id][0].entries[0].division;
+      var summonerPoint = json[id][0].entries[0].leaguePoints;
+      var summonerWin = json[id][0].entries[0].wins;
+      var summonerLoss = json[id][0].entries[0].losses;
+      $('#resultTier').html(summonerTier+" "+summonerDiv+" "+summonerPoint+"점<br>"
+                          +summonerWin+"승 "+summonerLoss+"패");
+
+
+    },
+    error:function(XMLHttpRequest, textStatus, errorThrown){
+      alert("error");
+    }
+  });
+}
+
+/*                                             JS Fiddle - trim
 var sumName = "";
 
 function summonerLookUp() {
@@ -114,7 +143,7 @@ function Name() {
 */
 
 
-/*                        Faker
+/*                                                 Faker
 
   var summonerName = "sktt1faker";
   //var summonerName = "abc";

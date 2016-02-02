@@ -35,6 +35,9 @@
     <div class="row" id="resultId">
         id
     </div>
+    <div class="row" id="resultTier">
+
+    </div>
 
   </div>
 </body>
